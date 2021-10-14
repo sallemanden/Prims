@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
 public class Graph {
@@ -20,7 +23,7 @@ public class Graph {
         for (int from = 0; from < numberVert; from++) {
             for (int to = 0; to < numberVert; to++) {
                 if (edgeMatrix[from][to] == 1) {
-                    System.out.println("Edge from " + from + " to " + to + ", weight " + weightMatrix[from][to]);
+                    System.out.println("From " + from + ", To " + to + ", Distance " + weightMatrix[from][to]+" km");
                 }
             }
         }
@@ -58,7 +61,7 @@ public class Graph {
                 }
             }
             MST += D[u.index];
-            System.out.println("Edge: " + P[u.index] + ", " + u.index + ", Weight " + D[u.index]);
+            System.out.println("From: " + P[u.index] + ", To " + u.index + ", Distance " + D[u.index]+" km");
         }
         System.out.println("MST size: " + MST);
     }
