@@ -23,10 +23,11 @@ public class Graph {
         for (int from = 0; from < numberVert; from++) {
             for (int to = 0; to < numberVert; to++) {
                 if (edgeMatrix[from][to] == 1) {
-                    System.out.println("From " + from + ", To " + to + ", Distance " + weightMatrix[from][to]+" km");
+                    System.out.println("From " + from + ", To " + to + ", Distance " + weightMatrix[from][to] + " km");
                 }
             }
         }
+        System.out.println("\n");
     }
 
     public void PrimsMST() {
@@ -49,10 +50,10 @@ public class Graph {
         VertexPairs[0].distance = 0;
         Q.decreasekey(pos);
         int MST = 0;
-        while(!Q.isEmpty()){
+        while (!Q.isEmpty()) {
             Pair u = Q.extractMin();
-            for(int v = 0; v < numberVert; v++){
-                if(edgeMatrix[u.index][v] == 1 && weightMatrix[u.index][v] < D [v]){
+            for (int v = 0; v < numberVert; v++) {
+                if (edgeMatrix[u.index][v] == 1 && weightMatrix[u.index][v] < D[v]) {
                     D[v] = weightMatrix[u.index][v];
                     P[v] = u.index;
                     pos = Q.getPosition(VertexPairs[v]);
@@ -61,9 +62,11 @@ public class Graph {
                 }
             }
             MST += D[u.index];
-            System.out.println("From: " + P[u.index] + ", To " + u.index + ", Distance " + D[u.index]+" km");
+            System.out.println("From: " + P[u.index] + ", To " + u.index + ", Distance " + D[u.index] + " km");
         }
-        System.out.println("MST size: " + MST);
+        System.out.println("\nTotal (shortest) distance: " + MST);
+        System.out.println("Total price (for shortest distance): " + (MST * 100000) + " Kr.");
+
     }
 }
 
