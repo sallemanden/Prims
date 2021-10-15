@@ -18,13 +18,29 @@ public class Graph {
         for (int from = 0; from < numberVert; from++) {
             for (int to = 0; to < numberVert; to++) {
                 if (edgeMatrix[from][to] == 1) {
-                    System.out.println("From " + from + ", To " + to + ", Distance " + weightMatrix[from][to] + " km");
+                    System.out.println("From " + from + " to " + to + ". Distance " + weightMatrix[from][to] + " km");
                 }
             }
         }
         System.out.println("\n");
     }
 
+    public String convertToString(int id){
+        String[] citys = {"Eksildstrup","Haslev","Holbæk",
+                "Jægerpris","Kalundborg","Køge","Korsør",
+                "Maribo", "Næstved", "Nakskov","Nykøbing F",
+                "Ringsted", "Roskilde", "Slagelse", "Sorø",
+                "Vordingborg"};
+        String city = "";
+
+        for (int i = 0; i < 1; i++) {
+            if(id == -1){
+                return null;
+            }
+            city = citys[id];
+        }
+        return city;
+    }
     public void PrimsMST() {
         int[] D = new int[edgeMatrix.length];
         int[] P = new int[edgeMatrix.length];
@@ -56,11 +72,12 @@ public class Graph {
                     Q.decreasekey(pos);
                 }
             }
+
             MST += D[u.index];
-            System.out.println("From: " + P[u.index] + ", To " + u.index + ", Distance " + D[u.index] + " km");
+            System.out.println("From: " + convertToString(P[u.index]) + " to " + convertToString(u.index) + ". Distance " + D[u.index] + " km");
         }
         System.out.println("\nTotal (shortest) distance: " + MST);
-        System.out.println("Total price (for shortest distance): " + (MST * 100000) + " Kr.");
+        System.out.println("Total price (for shortest distance): " + (MST * 100000) + " kr.");
 
     }
 }
